@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Grupo de usuarios que pueden editar impuestos adicionales -->
+    <record id="group_edit_additional_taxes" model="res.groups">
+        <field name="name">Editar impuesto en ventas</field>
+        <field name="category_id" ref="base.module_category_sales"/>
+        <field name="comment">Usuarios que pueden modificar la columna de impuestos adicionales en las líneas de venta</field>
+    </record>
+
+</odoo>
+

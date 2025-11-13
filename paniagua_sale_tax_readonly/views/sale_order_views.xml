@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Hacer readonly el campo tax_id según permisos - Vista formulario -->
+    <record id="view_order_form_tax_readonly_form" model="ir.ui.view">
+        <field name="name">sale.order.form.tax.readonly.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Agregar campo invisible para controlar readonly -->
+            <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="before">
+                <field name="tax_id_readonly" invisible="1"/>
+            </xpath>
+            <!-- Hacer readonly basado en el campo computado -->
+            <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="attributes">
+                <attribute name="readonly">tax_id_readonly</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Hacer readonly el campo tax_id según permisos - Vista lista -->
+    <record id="view_order_form_tax_readonly_list" model="ir.ui.view">
+        <field name="name">sale.order.form.tax.readonly.list</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Agregar campo invisible para controlar readonly -->
+            <xpath expr="//field[@name='order_line']/list//field[@name='tax_id']" position="before">
+                <field name="tax_id_readonly" column_invisible="1"/>
+            </xpath>
+            <!-- Hacer readonly basado en el campo computado -->
+            <xpath expr="//field[@name='order_line']/list//field[@name='tax_id']" position="attributes">
+                <attribute name="readonly">tax_id_readonly</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
