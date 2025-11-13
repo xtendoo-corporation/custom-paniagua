@@ -5,10 +5,16 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='type']" position="after">
+            <xpath expr="//field[@name='supplier_taxes_id']" position="after">
                 <label for="minimum_margin" string="Margen Mínimo (%)"/>
                 <div class="o_row">
                     <field name="minimum_margin"/>
+                </div>
+                <label for="current_margin" string="Margen Actual (%)"/>
+                <div class="o_row">
+                    <field name="current_margin" force_save="0"
+                           decoration-success="current_margin >= minimum_margin and minimum_margin > 0"
+                           decoration-danger="current_margin &lt; minimum_margin and minimum_margin > 0"/>
                 </div>
             </xpath>
         </field>
